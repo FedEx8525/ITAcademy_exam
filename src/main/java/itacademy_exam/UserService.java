@@ -26,7 +26,7 @@ public class UserService {
             throw  new UserAlreadyExistsException("Error: the user you try to enter already exists!");
         }
 
-        if(password == null || password.length() < 8) {
+        if(password == null || password.length() <= 8) {
             throw new InvalidPasswordException("Error: Password too short. Will must be minimum 8 character long!");
         }
 
