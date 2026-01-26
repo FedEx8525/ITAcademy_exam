@@ -17,20 +17,20 @@ public class Main {
         }
 
         try {
-            User user2 = new User("Carlos", "CR1234");
+            service.register("Carlos", "CR1234");
         } catch (NotNullNameException | UserAlreadyExistsException | InvalidPasswordException e) {
             System.out.println("Error: " + e.getMessage());
         }
 
         try {
-            User user3 = new User("", "RD12345678" );
+            service.register("", "RD12345678" );
 
         } catch (NotNullNameException | UserAlreadyExistsException | InvalidPasswordException e) {
             System.out.println("Error: " + e.getMessage());
         }
 
         try {
-            User user3 = new User("", "RD12345678" );
+            service.register("Federico", "FC123456");
 
         } catch (NotNullNameException | UserAlreadyExistsException | InvalidPasswordException e) {
             System.out.println("Error: " + e.getMessage());
