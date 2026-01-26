@@ -12,15 +12,29 @@ public class Main {
 
         try {
             service.register("Federico", "FC123456");
-        } catch (NotNullNameException | UserAlreadyExistsException | InvalidPasswordException e)
+        } catch (NotNullNameException | UserAlreadyExistsException | InvalidPasswordException e) {
+            System.out.println("Error: " + e.getMessage());
+        }
 
-        
-        User user2 = new User("Carlos", "CR1234");
-        User user3 = new User("", "RD12345678" );
-        User user4 = new User("Paul", "");
+        try {
+            User user2 = new User("Carlos", "CR1234");
+        } catch (NotNullNameException | UserAlreadyExistsException | InvalidPasswordException e) {
+            System.out.println("Error: " + e.getMessage());
+        }
 
+        try {
+            User user3 = new User("", "RD12345678" );
 
+        } catch (NotNullNameException | UserAlreadyExistsException | InvalidPasswordException e) {
+            System.out.println("Error: " + e.getMessage());
+        }
 
+        try {
+            User user3 = new User("", "RD12345678" );
+
+        } catch (NotNullNameException | UserAlreadyExistsException | InvalidPasswordException e) {
+            System.out.println("Error: " + e.getMessage());
+        }
 
     }
 }
