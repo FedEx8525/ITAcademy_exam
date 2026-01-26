@@ -12,15 +12,15 @@ public class Main {
 
         try {
             service.register("Federico", "FC123456");
-        } catch ()
+        } catch (NotNullNameException | UserAlreadyExistsException | InvalidPasswordException e)
 
-        User user1 = new User("Federico", "FC123456" );
+        
         User user2 = new User("Carlos", "CR1234");
         User user3 = new User("", "RD12345678" );
         User user4 = new User("Paul", "");
 
 
 
-        UserService service = new UserService(Set<User> usersList);
+
     }
 }
