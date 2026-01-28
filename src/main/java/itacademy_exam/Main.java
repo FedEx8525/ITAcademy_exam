@@ -1,39 +1,36 @@
 package itacademy_exam;
 
-import java.util.HashSet;
-import java.util.Set;
+import exceptions.InvalidPasswordException;
+import exceptions.NotNullNameException;
+import exceptions.UserAlreadyExistsException;
+import service.RegistrationValidator;
+import service.UserService;
+import service.UserValidator;
 
 public class Main {
     public static void main(String[] args) {
 
-        Set<User> userList = new HashSet<User>();
 
-        UserService service = new UserService(userList);
+        UserValidator validator = new RegistrationValidator();
 
-        try {
-            service.register("Federico", "FC123456");
-        } catch (NotNullNameException | UserAlreadyExistsException | InvalidPasswordException e) {
-            System.out.println("Error: " + e.getMessage());
-        }
+        UserService userService = new UserService(validator);
 
-        try {
-            service.register("Carlos", "CR1234");
-        } catch (NotNullNameException | UserAlreadyExistsException | InvalidPasswordException e) {
-            System.out.println("Error: " + e.getMessage());
-        }
+        String[][] usersToRegister = {
+                {"Federico", "FC123456"},
+                {"Carlos", "CR1234"},
+                {"", "RD12345678"},
+                {"Federico", "FC123456"}
+        };
 
-        try {
-            service.register("", "RD12345678" );
+        for(String[] userData : usersToRegister) {
 
-        } catch (NotNullNameException | UserAlreadyExistsException | InvalidPasswordException e) {
-            System.out.println("Error: " + e.getMessage());
-        }
 
-        try {
-            service.register("Federico", "FC123456");
-
-        } catch (NotNullNameException | UserAlreadyExistsException | InvalidPasswordException e) {
-            System.out.println("Error: " + e.getMessage());
+            try {
+                userService.register(userData[0], userData[1]);
+                System.out.println("Registration Successful for " + userData[0]);
+            } catch (NotNullNameException | UserAlreadyExistsException | InvalidPasswordException e) {
+                System.out.println("Error registering " + userData[0] + ": " + e.getMessage());
+            }
         }
 
     }

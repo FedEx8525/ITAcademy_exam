@@ -1,4 +1,4 @@
-package itacademy_exam;
+package models;
 
 import java.util.Objects;
 
